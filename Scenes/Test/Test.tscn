@@ -1,12 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbd0ylxsh1m3x"]
+[gd_scene load_steps=11 format=3 uid="uid://bbd0ylxsh1m3x"]
 
 [ext_resource type="Texture2D" uid="uid://4646egglk42h" path="res://assets/env/elementStone025.png" id="1_dr6pc"]
+[ext_resource type="Texture2D" uid="uid://d20wc388rfk1k" path="res://icon.svg" id="2_wjuvt"]
+[ext_resource type="Texture2D" uid="uid://bxncfac4x22q4" path="res://assets/env/elementWood015.png" id="3_1h1h0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjuvt"]
-size = Vector2(19, 655)
+size = Vector2(26, 655)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1h1h0"]
 size = Vector2(1155, 21.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1h1h0"]
+radius = 34.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1h1h0"]
+bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kptja"]
+size = Vector2(545, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43i24"]
+size = Vector2(27.5, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_43i24"]
+radius = 16.0
 
 [node name="Test" type="Node2D"]
 
@@ -30,11 +47,11 @@ scale = Vector2(0.328571, 2.96818)
 texture = ExtResource("1_dr6pc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-0.5, 317.5)
+position = Vector2(-4, 317.5)
 shape = SubResource("RectangleShape2D_wjuvt")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(600, 323)
+position = Vector2(602, 323)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
 position = Vector2(-21.8261, 319.5)
@@ -45,3 +62,71 @@ texture = ExtResource("1_dr6pc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(-25.5, 318.25)
 shape = SubResource("RectangleShape2D_1h1h0")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(947, 569)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(-24.5, -30)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wjuvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-24, -29)
+shape = SubResource("CircleShape2D_1h1h0")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(554, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+position = Vector2(-24.5, -30)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wjuvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-24, -29)
+shape = SubResource("CircleShape2D_1h1h0")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(271, 150)
+physics_material_override = SubResource("PhysicsMaterial_1h1h0")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+position = Vector2(-24.5, -30)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wjuvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(-24, -29)
+shape = SubResource("CircleShape2D_1h1h0")
+
+[node name="Plank" type="RigidBody2D" parent="."]
+position = Vector2(567, 586)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plank"]
+position = Vector2(284.5, 1.25)
+scale = Vector2(2.48636, 0.25)
+texture = ExtResource("3_1h1h0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Plank"]
+position = Vector2(546, -17)
+scale = Vector2(0.120454, 0.25)
+texture = ExtResource("3_1h1h0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plank"]
+position = Vector2(287.5, 0)
+shape = SubResource("RectangleShape2D_kptja")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Plank"]
+position = Vector2(543.75, -16)
+shape = SubResource("RectangleShape2D_43i24")
+
+[node name="Pivot" type="RigidBody2D" parent="."]
+position = Vector2(854, 615)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_wjuvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot"]
+shape = SubResource("CircleShape2D_43i24")
